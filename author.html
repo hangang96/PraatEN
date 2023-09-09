@@ -5,27 +5,26 @@
     <title>作者页</title>
     <style>
 	
-       /* 页面样式 */
-		body {
-			margin: 0;
-			padding: 0;
-			background-image: url('5.jpg'); /* 背景图片 */
-			background-size: cover; /* 图片尺寸覆盖整个页面 */
-			background-color: black; /* 设置页面背景颜色为黑色 */
-			background-position: center center; /* 图片居中 */
-			background-attachment: fixed; /* 固定背景图片 */
-			font-family: Arial, sans-serif; /* 字体样式 */
-			color: #fff; /* 文本颜色 */
-			display: flex; /* 使用 Flex 布局 */
-			justify-content: center; /* 左右分布，中间留有间隔 */
-			align-items: center; /* 垂直居中 */
-			position: relative; /* 设置相对定位，以便定位返回按钮 */
-		}
+        body {
+            margin: 0;
+            padding: 0;
+            
+            background-size: cover; /* 图片尺寸覆盖整个页面 */
+            background-color: black; /* 设置页面背景颜色为黑色 */
+            background-position: center center; /* 图片居中 */
+            background-attachment: fixed; /* 固定背景图片 */
+            font-family: Arial, sans-serif; /* 字体样式 */
+            color: #fff; /* 文本颜色 */
+            display: flex; /* 使用 Flex 布局 */
+            flex-direction: column; /* 垂直方向排列子元素 */
+            align-items: center; /* 子元素水平居中 */
+            position: relative; /* 设置相对定位，以便定位返回按钮 */
+        }
 
 
 		
 		/* 菜单按钮样式 */
-        .menu-button {
+       .menu-button {
             position: absolute;
             top: 20px; /* 距离页面顶部的距离 */
             right: 40px; /* 距离页面右侧的距离 */
@@ -131,7 +130,7 @@
 </head>
 <body>
 
-    <!-- 菜单按钮 -->
+     <!-- 菜单按钮 -->
     <button class="menu-button" id="return-button">返回</button>
 	
     <!-- 第一个作者容器 -->
@@ -156,6 +155,8 @@
             <p>研究成果：https://www.fon.hum.uva.nl/david/</p>
         </div>
     </div>
+
+	
 	<script>
         // 返回按钮点击事件
         document.getElementById('return-button').addEventListener('click', function() {
