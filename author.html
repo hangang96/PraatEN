@@ -9,9 +9,9 @@
 		body {
 			margin: 0;
 			padding: 0;
-			background-image: url('5.jpg'); /* 作者页背景图片 */
+			background-image: url('5.jpg'); /* 背景图片 */
 			background-size: cover; /* 图片尺寸覆盖整个页面 */
-			background-color:black;
+			background-color: black; /* 设置页面背景颜色为黑色 */
 			background-position: center center; /* 图片居中 */
 			background-attachment: fixed; /* 固定背景图片 */
 			font-family: Arial, sans-serif; /* 字体样式 */
@@ -21,6 +21,7 @@
 			align-items: center; /* 垂直居中 */
 			position: relative; /* 设置相对定位，以便定位返回按钮 */
 		}
+
 
 		
 		/* 菜单按钮样式 */
@@ -51,6 +52,8 @@
 
         /* 作者容器样式 */
         .author-container {
+		    top:0px;
+			right:0px;
             text-align: center;
 			transition: transform 0.2s ease-in-out; /* 添加悬停效果 */
 			display: flex; /* 使用 Flex 布局，使内容垂直居中 */
