@@ -29,7 +29,7 @@
             align-items: center;
             z-index: 1; /* 设置标题容器在最上层 */
             position: relative;
-            top: 120 px; /* 距离页面最顶端的距离 */
+            top: 80 px; /* 距离页面最顶端的距离 */
             left: 0;
             right: 0;
         }
@@ -75,7 +75,7 @@
 			/* 正文样式 */
 			#content {
 				font-size:12px;
-				margin-top: 20px; /* 调整文本与网页顶端的距离，可以根据需要修改 */
+				margin-top: 10px; /* 调整文本与网页顶端的距离，可以根据需要修改 */
 				text-align: center; /* 文本居中对齐 */
 				color: #AFEEEE; 
 				font-weight: bold; /* 加粗字体 */
@@ -118,7 +118,7 @@
 				justify-content: center;
 				align-items: center;
 				position: relative;
-				bottom: 0; /* 图片位于正文下方 */
+				bottom: 15px; /* 图片位于正文下方 */
 				left: 50%; /* 水平居中 */
 				transform: translateX(-50%); /* 水平居中 */
 				animation: fadeInContent 2s ease-in-out; /* 设置正文的缓慢隐现效果 */
