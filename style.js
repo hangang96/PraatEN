@@ -5,12 +5,12 @@
     // 获取隐藏文字的元素
     const hiddenText1 = document.getElementById("hidden-text-1");
     const hiddenText2 = document.getElementById("hidden-text-2");
-	const hiddenText3 = document.getElementById("hidden-text-3");
+    const hiddenText3 = document.getElementById("hidden-text-3");
     
     // 切换隐藏文字的显示状态
     hiddenText1.style.display = body.classList.contains("menu-open") ? "block" : "none";
     hiddenText2.style.display = body.classList.contains("menu-open") ? "block" : "none";
-	hiddenText3.style.display = body.classList.contains("menu-open") ? "block" : "none";
+    hiddenText3.style.display = body.classList.contains("menu-open") ? "block" : "none";
 }
 
 		
