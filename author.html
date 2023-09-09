@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作者页</title>
+    <style>
+	
+       /* 页面样式 */
+		body {
+			margin: 0;
+			padding: 0;
+			background-image: url('5.jpg'); /* 作者页背景图片 */
+			background-size: cover; /* 图片尺寸覆盖整个页面 */
+			background-color:black;
+			background-position: center center; /* 图片居中 */
+			background-attachment: fixed; /* 固定背景图片 */
+			font-family: Arial, sans-serif; /* 字体样式 */
+			color: #fff; /* 文本颜色 */
+			display: flex; /* 使用 Flex 布局 */
+			justify-content: center; /* 左右分布，中间留有间隔 */
+			align-items: center; /* 垂直居中 */
+			position: relative; /* 设置相对定位，以便定位返回按钮 */
+		}
+
+		
+		/* 菜单按钮样式 */
+        .menu-button {
+            position: absolute;
+            top: 20px; /* 距离页面顶部的距离 */
+            right: 40px; /* 距离页面右侧的距离 */
+            background-color: transparent; /* 背景透明 */
+            border: none; /* 去除边框 */
+            border-radius: 5px; /* 添加圆角 */
+            color: #fff; /* 字体颜色 */
+            font-size: 15px;
+            cursor: pointer;
+			opacity: 0; /* 初始时设置透明度为0 */
+            transition: transform 3s ease-in-out, opacity 3s ease-in-out; /* 添加悬停效果和透明度动画 */
+			text-decoration: none; /* 去除下划线 */
+			display: inline-block; /* 将链接显示为块级元素，以应用按钮效果 */
+			padding: 10px 20px; /* 调整按钮的内边距，根据需要修改 */
+			border-radius: 20px; /* 添加圆角 */
+			background-color: #778899; /* 透明背景色，可以根据需要设置 */
+			color: Honeydew; /* 字体颜色，根据需要修改 */
+        }
+
+        .menu-button:hover {
+            transform: scale(1.1); /* 鼠标悬停时微微放大 */
+        }
+		
+
+        /* 作者容器样式 */
+        .author-container {
+            text-align: center;
+			transition: transform 0.2s ease-in-out; /* 添加悬停效果 */
+			display: flex; /* 使用 Flex 布局，使内容垂直居中 */
+			flex-direction: column; /* 垂直方向排列子元素 */
+			align-items: center; /* 子元素水平居中 */
+        }
+
+        .author-container img {
+            margin-bottom: 1px; /* 调整图片与文字的间距，根据需要修改 */
+            border: 10px solid rgba(255, 239, 213, 0.6); /* 添加淡色相框 */
+            border-radius: 10px; /* 添加圆角 */
+        }
+		
+
+        /* 文本样式 */
+        .author-text {
+            padding: 20px;
+			flex: 1; /* 让文本容器占据可用空间，垂直居中 */
+			display: flex; /* 使用 Flex 布局，垂直居中文本内容 */
+			flex-direction: column; /* 垂直方向排列子元素 */
+			justify-content: center; /* 子元素垂直居中 */
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.5;
+			
+        }
+
+        /* 悬停效果 */
+        .author-container:hover {
+            transform: scale(1.05); /* 鼠标悬停时微微放大 */
+        }
+
+        /* 左侧滑入动画 */
+        @keyframes slideInLeft {
+            0% {
+                transform: translateX(-100%); /* 初始状态，从左侧滑入 */
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0); /* 最终位置，显示在原位 */
+                opacity: 1;
+            }
+        }
+
+        /* 右侧滑入动画 */
+        @keyframes slideInRight {
+            0% {
+                transform: translateX(100%); /* 初始状态，从右侧滑入 */
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0); /* 最终位置，显示在原位 */
+                opacity: 1;
+            }
+        }
+
+        /* 文字逐渐隐现动画 */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 菜单按钮 -->
+    <button class="menu-button" id="return-button">返回</button>
+	
+    <!-- 第一个作者容器 -->
+    <div class="author-container" style="animation: slideInLeft 3s ease-in-out forwards;margin-top:90px;">
+        <img src="paul.jpg" alt="作者1图片" style="width: 250px; height: 300px; "> <!-- 设置不同的宽度和高度 -->
+        <div class="author-text" style="animation: fadeIn 2s ease-in-out;">
+            <h1>保罗·波尔兹马（Paul Boersma）</h1>
+            <p>语音科学教授<br>阿姆斯特丹大学<br>E-mail: paul.boersma@uva.nl<br>电话: +31–20–5252385 (me) or 5253864 (secretary).</p>
+            <p>主要研究兴趣：通过计算机模拟揭示如何通过假设语言使用者<br>心智中存在多层表征解释一门语言的语音、音系和形态的产出、<br>理解和习得，以及这些方面的代际变化</p>
+            <p>最近研究兴趣：通过人工神经网络（ANN）实现上述目标，<br>在ANN中，音系范畴从语音数据（有时候还有语义数据）中涌现。</p>
+            <p>研究论文：https://www.fon.hum.uva.nl/paul/</p>
+        </div>
+    </div>
+	
+
+    <!-- 第二个作者容器 -->
+    <div class="author-container" style="animation: slideInRight 3s ease-in-out forwards;margin-top: -70px;">
+        <img src="david.jpg" alt="作者2图片" style="width: 340px; height: 250px;"> <!-- 设置不同的宽度和高度 -->
+        <div class="author-text" style="animation: fadeIn 2s ease-in-out;">
+            <h1>大卫·韦宁克（David Weenink）</h1>
+            <p>E-mail: David.Weenink@uva.nl<br>电话: +31-20-5252187.<br>地址: Institute of Phonetic Sciences, <br>Spuistraat 134, room 6.33, 1012VB Amsterdam, The Netherlands.</p>
+            <p>研究成果：https://www.fon.hum.uva.nl/david/</p>
+        </div>
+    </div>
+	<script>
+        // 返回按钮点击事件
+        document.getElementById('return-button').addEventListener('click', function() {
+            // 返回到上一页，可以使用浏览器的历史记录来实现
+            window.history.back();
+        });
+		
+		
+		// 页面加载后显示按钮
+        window.addEventListener('load', function() {
+            // 使用定时器设置按钮透明度和动画
+            setTimeout(function() {
+                var button = document.getElementById('return-button');
+                button.style.opacity = '1'; // 设置透明度为1，实现淡入效果
+            }, 1000); // 延迟1秒显示按钮
+        });
+    </script>
+</body>
+</html>
+

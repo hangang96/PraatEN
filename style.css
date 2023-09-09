@@ -1,0 +1,246 @@
+        /* 基本样式 */
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            position: relative; /* 设置相对定位 */
+            background-image: url('3.jpg'); /* 背景图片的 URL */
+            background-size: 100% 100%; /* 让背景图片覆盖整个页面 */
+            background-position: top left; /* 指定背景图片的位置，可以根据需要进行调整 */
+            background-attachment: fixed; /* 让背景图片固定在视口 */
+        }
+		/* 添加半透明背景 */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* 半透明背景颜色 */
+            z-index: -1; /* 将半透明背景置于最底层 */
+        }
+		
+		
+		/* 包装标题的容器 */
+        #title-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1; /* 设置标题容器在最上层 */
+            position: relative;
+            top: 120 px; /* 距离页面最顶端的距离 */
+            left: 0;
+            right: 0;
+        }
+		
+		/* 添加标题样式 */
+		h1 {
+			font-size: 36px; /* 标题字号 */
+			font-family: "Times New Roman", "宋体", serif; /* 标题字体 */
+			font-weight: bold;
+			color: rgba(255, 222, 173, 0.7); /* 设置半透明文字颜色 */
+			animation: fadeIn 2s ease-in-out; /* 使用动画效果 */
+		   }
+		
+		  /* 设置动画关键帧 */
+		 @keyframes fadeIn {
+			0% {
+				color: rgba(255, 222, 173, 0); /* 初始完全透明 */
+			}
+			100% {
+				color: rgba(255, 222, 173, 0.7); /* 结束时半透明 */
+			     }
+		    }
+			/* 图标样式 */
+			#title-container img {
+				width: 40px; /* 设置图标宽度 */
+				height: 30px; /* 设置图标高度 */
+				margin-right: 10px; /* 设置图标与标题之间的右边距 */
+				vertical-align: middle; /* 垂直居中对齐 */
+				animation: fadeInIcon 2s ease-in-out; /* 使用动画效果 */
+			}
+
+			/* 设置图标的动画关键帧 */
+			@keyframes fadeInIcon {
+				0% {
+					opacity: 0; /* 初始完全透明 */
+				}
+				100% {
+					opacity: 1; /* 结束时完全不透明 */
+				}
+			}		
+			
+			
+			/* 正文样式 */
+			#content {
+				font-size:12px;
+				margin-top: 20px; /* 调整文本与网页顶端的距离，可以根据需要修改 */
+				text-align: center; /* 文本居中对齐 */
+				color: #AFEEEE; 
+				font-weight: bold; /* 加粗字体 */
+				padding: 15px;
+				line-height: 1.0; /* 设置行高，可以根据需要调整 */
+				animation: fadeInContent 2s ease-in-out; /* 设置正文的缓慢隐现效果 */
+			}  
+			
+			/* 注释文字样式 */
+			#footer-text {
+				text-align: center; /* 文本居中对齐 */
+				color: #F5FFFA; /* 文字颜色 */
+				font-size: 6px; /* 字体大小 */
+				margin-top: 5px; /* 调整注释文字与正文的间距，根据需要修改 */
+			}
+
+
+
+			/* 设置正文的动画关键帧 */
+			@keyframes fadeInContent {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+
+			p {
+				font-size: 18px;
+				line-height: 1.6;
+				margin-bottom: 20px;
+			}	
+			
+			
+			
+			 /* 图片容器样式 */
+			#image-container {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				position: relative;
+				bottom: 0; /* 图片位于正文下方 */
+				left: 50%; /* 水平居中 */
+				transform: translateX(-50%); /* 水平居中 */
+				animation: fadeInContent 2s ease-in-out; /* 设置正文的缓慢隐现效果 */
+			}
+
+			/* 图片样式 */
+			#image-container img {
+				width: 480px; /* 图片宽度 */
+				height: 300px; /* 高度自适应 */
+				margin-bottom: 20px;
+				transition: transform 0.3s ease; /* 添加缩放过渡效果 */
+			}
+
+			/* 图片悬停时的效果 */
+			#image-container:hover img {
+				transform: scale(1.05); /* 光标悬停时微微放大图片 */
+				box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* 添加阴影效果 */
+			}
+			
+			@keyframes fadeInContent {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+
+			p {
+				font-size: 18px;
+				line-height: 1.6;
+				margin-bottom: 20px;
+			}	
+
+
+        #menu-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            background-color: #000000;
+            color: #FFDAB9;
+            padding: 20px;
+			padding-top: 60px; /* 增加上内边距来向下移动文本内容 */
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+            opacity: 0; /* 初始时隐藏并设置透明度为0 */
+            transition: opacity 0.3s ease-in-out; /* 添加渐变效果 */
+            }
+		
+		    /* 隐藏菜单项的初始状态 */
+                .hidden-text {
+                  display: none;
+            }
+
+
+        /* 显示菜单时的样式 */
+        .menu-open #menu-container {
+            opacity: 1; /* 显示并设置透明度为1 */
+        }
+
+      #menu-toggle {
+			position: fixed;
+			bottom: 20px; /* 将图标位置设置为稍高于菜单 */
+			left: 20px;
+			background: #000; /* 黑色背景 */
+			color: #fff; /* 白色图标 */
+			width: 40px;
+			height: 40px;
+			border-radius: 50%; /* 设置图标为圆形 */
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			cursor: pointer;
+			z-index: 1;
+			border: 2px solid gold; /* 金色边缘 */
+		}
+
+
+       	
+			
+	       /* 菜单链接样式 */
+			#menu {
+				list-style: none;
+				padding: 0;
+				text-align: center; /* 文本居中对齐 */
+			}
+
+			#menu li {
+				display: inline-block; /* 将每个选项显示为行内块元素 */
+				margin: 10px; /* 调整选项之间的间距，根据需要修改 */
+			}
+
+			#menu li a {
+				text-decoration: none; /* 去除下划线 */
+				display: inline-block; /* 将链接显示为块级元素，以应用按钮效果 */
+				padding: 10px 20px; /* 调整按钮的内边距，根据需要修改 */
+				border: none; /* 去除边框 */
+				border-radius: 20px; /* 添加圆角 */
+				background-color: #778899; /* 透明背景色，可以根据需要设置 */
+				color: Honeydew; /* 字体颜色，根据需要修改 */
+				font-size: 16px; /* 字体大小，根据需要修改 */
+				transition: transform 0.2s ease; /* 添加按钮下沉效果 */
+			}
+
+			#menu li a:hover {
+				transform: translateY(2px); /* 鼠标悬停时按钮下沉 */
+			}
+
+		
+		 /* 将 Logo 放在隐藏菜单的上端中央 */
+        #logo {
+            position: absolute; /* 绝对定位 */
+            top: 400px; /* 距离顶部的距离 */
+            left: 50%; /* 左侧位置居中 */
+			width: 40px;
+			height: 40px;
+            transform: translateX(-50%); /* 使 Logo 居中 */
+		
+	
+		
+
+
+		
+		

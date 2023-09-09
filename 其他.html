@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>其他分析工具</title>
+    <style>
+        /* 页面样式 */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color:rgba(0, 0, 0, 0.7); /* 深灰色背景 */
+            font-family: "Times New Roman", "宋体", serif; /* 标题字体 */
+        }
+		/* 修改链接的颜色 */
+		a {
+		color:#00FFFF; /* 将链接颜色更改为 */
+		text-decoration: none; /* 去掉下划线 */
+		}
+		
+		h1{
+		    color:#BDB76B;
+			font-family: "Times New Roman", "宋体", serif; /* 标题字体 */
+		}
+		/* 菜单按钮样式 */
+        .menu-button {
+            position: absolute;
+            top: 12px; /* 距离页面顶部的距离 */
+            right: 59px; /* 距离页面左侧的距离 */
+			animation: fadeIn 2s ease-in-out forwards; /* 逐渐浮现效果 */
+			background-color: #8DB6CD; 
+			animation: fadeIn 2s ease-in-out forwards; /* 逐渐浮现效果 */
+			opacity: 0.5; /* 设置按钮的透明度为半透明 */
+			background-color: rgba(188,210,238, 0.7); /* 设置按钮的背景颜色为半透明白色 */
+			padding: 10px; /* 添加一些内边距 */
+			}
+
+
+        /* 命令行界面样式 */
+        #command-line {
+            width: 1000px;
+			height: 480px;
+            margin: 30px auto;
+            padding: 10px;
+            background-color: black;
+            color: white;
+            font-family: monospace;
+            border: 1px solid white;
+            overflow: auto;
+            opacity: 0; /* 初始透明 */
+            animation: fadeIn 2s ease-in-out forwards; /* 逐渐浮现效果 */
+            position: relative;
+			border-radius: 10px; /* 圆角 */
+        }
+
+        /* 逐渐浮现动画 */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* 模拟窗口样式 */
+        #simulation-window {
+            width: 1100px;
+            max-width: 8000px;
+			height:550px;
+			top:-30px;
+            margin: 0 auto;
+            background-color: white;
+            border: 1px solid #ccc; /* 白边 */
+            border-radius: 10px; /* 圆角 */
+            position: relative;
+        }
+
+        /* 关闭按钮样式 */
+        #close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        /* 关闭按钮的伪元素样式，用于生成“关闭”图标 */
+        #close-button::before {
+            content: "×";
+            font-weight: bold;
+        }
+		/* 按钮容器样式，用于包裹按钮 */
+        #button-container {
+            text-align: center;
+            position: absolute;
+            top: 80px; /* 调整按钮容器距离页面顶部的位置 */
+            left: 50%; /* 将按钮容器水平居中 */
+            transform: translateX(-50%); /* 居中偏移 */
+        }
+
+        /* 按钮样式 */
+		button {
+			padding: 10px 20px;
+			margin: 10px;
+			font-size: 12px;
+			background-color: #CDB7B5; /* 淡灰蓝色背景 */
+			color: black;
+			border: none;
+			cursor: pointer;
+			position: relative;
+			z-index: 1; /* 位于模拟窗口之上 */
+			border-radius: 10px; /* 圆角 */
+			transition: background-color 0.2s, box-shadow 0.2s; /* 添加过渡效果 */
+		}
+
+		/* 鼠标悬停时按钮效果 */
+		button:hover {
+			background-color: #B0B7C4; /* 鼠标悬停时的背景颜色 */
+			box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* 鼠标悬停时的阴影效果，模拟下凹 */
+		}
+		
+		 /* 逐渐浮现动画 */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+	
+    </style>
+</head>
+<body>
+
+	    <!-- 在页面中添加一个标题 -->
+	    <h1 align="center">其他分析工具</h1>
+
+        <button class="menu-button" id="return-button"><a href="Praat主页.html">返回</a></button>
+	    <br><br><br><br><br><br>
+	    <!-- 按钮容器 -->
+        <div id="button-container" style="white-space: nowrap;">
+        <!-- 不同计算机系统的按钮 -->
+        <button onclick="simulateSystem('SFS/WASP')">SFS/WASP</button>
+		<button onclick="simulateSystem('Speech Analyzer')">Speech Analyzer</button>
+		<button onclick="simulateSystem('Wavesurfer')">Wavesurfer</button>
+    </div>
+
+    <div id="simulation-window">
+        <div id="close-button"></div>
+        <div id="command-line">
+            <!-- 命令行内容将在按钮点击时通过JavaScript进行更新 -->
+        </div>
+    </div>
+
+   
+
+    <script>
+       // JavaScript函数，模拟不同系统的命令行输出
+		function simulateSystem(systemName) {
+			var commandLine = document.getElementById('command-line');
+			commandLine.innerHTML = '';
+
+			switch (systemName) {
+				case 'SFS/WASP':
+					commandLine.innerHTML ='1. 全名：<a href="https://www.phon.ucl.ac.uk/downloads/sfs/wasp/wasp180.exe">SFS/WASP</a><br><br><img src="SFS.jpg" alt="示例图片" width="400" height="300"><br><br><a href="https://ssd.eduhk.hk/?immediate=true&slide=0&slideElement=-1">使用手册（需注册）</a><br><br><a href="https://www.speechandhearing.net/laboratory/wasp/">网页版</a><br><br>本页图片来自官网';
+					break;		
+                case 'Speech Analyzer':
+					commandLine.innerHTML ='1.名称：<a href="https://software.sil.org/speech-analyzer/">Speech Analyzer</a>  下载 <a href="https://software.sil.org/downloads/r/speech-analyzer/releases/SpeechAnalyzer.3.1.2.0.exe">installer</a><br><br><img src="speech analyzer.jpg" alt="示例图片" width="400" height="300"><br><br><a href="https://github.com/sillsdev/SpeechAnalyzer/raw/master/DistFiles/Training/SA%20Student%20Manual.pdf">学生手册</a><br><br>本页图片来自官网';	
+                    break;	
+				case 'Wavesurfer':
+					commandLine.innerHTML ='1.名称：<a href="https://sourceforge.net/projects/wavesurfer/">Wavesurfer</a>  下载 <a href="https://sourceforge.net/projects/wavesurfer/files/latest/download">installer</a><br><br>JS库：<a href="https://wavesurfer-js.org/">wavesurfer.js v7</a><br><br><img src="WSjs.jpg" alt="示例图片" width="600" height="200"><br><br><br><br>本页图片来自官网';	
+                    break;	 	
+			}
+		}
+		
+	 // 返回按钮点击事件
+        document.getElementById('return-button').addEventListener('click', function() {
+            // 返回到上一页，可以使用浏览器的历史记录来实现
+            window.history.back();
+        });
+
+    </script>
+</body>
+</html>
+

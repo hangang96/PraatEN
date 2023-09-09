@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算机系统模拟</title>
+    <style>
+        /* 页面样式 */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #333; /* 深灰色背景 */
+            font-family: Arial, sans-serif;
+        }
+		/* 修改链接的颜色 */
+		a {
+		color: #97FFFF; /* 将链接颜色更改为红色 */
+		text-decoration: none; /* 去掉下划线 */
+		}
+		
+		h1{
+		    color:#BDB76B;
+			font-family: "Times New Roman", "宋体", serif; /* 标题字体 */
+		}
+		/* 菜单按钮样式 */
+        .menu-button {
+            position: absolute;
+            top: 12px; /* 距离页面顶部的距离 */
+            right: 59px; /* 距离页面左侧的距离 */
+			animation: fadeIn 2s ease-in-out forwards; /* 逐渐浮现效果 */
+			background-color: #F0FFFF; 
+			animation: fadeIn 2s ease-in-out forwards; /* 逐渐浮现效果 */
+			opacity: 0.5; /* 设置按钮的透明度为半透明 */
+			background-color: rgba(255, 255, 255, 0.7); /* 设置按钮的背景颜色为半透明白色 */
+			padding: 10px; /* 添加一些内边距 */
+			}
+
+
+        /* 命令行界面样式 */
+        #command-line {
+            width: 1000px;
+			height: 480px;
+            margin: 30px auto;
+            padding: 10px;
+            background-color: black;
+            color: white;
+            font-family: monospace;
+            border: 1px solid white;
+            overflow: auto;
+            opacity: 0; /* 初始透明 */
+            animation: fadeIn 2s ease-in-out forwards; /* 逐渐浮现效果 */
+            position: relative;
+			border-radius: 10px; /* 圆角 */
+        }
+
+        /* 逐渐浮现动画 */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* 模拟窗口样式 */
+        #simulation-window {
+            width: 1100px;
+            max-width: 8000px;
+			height:550px;
+			top:-30px;
+            margin: 0 auto;
+            background-color: white;
+            border: 1px solid #ccc; /* 白边 */
+            border-radius: 10px; /* 圆角 */
+            position: relative;
+        }
+
+        /* 关闭按钮样式 */
+        #close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        /* 关闭按钮的伪元素样式，用于生成“关闭”图标 */
+        #close-button::before {
+            content: "×";
+            font-weight: bold;
+        }
+		/* 按钮容器样式，用于包裹按钮 */
+        #button-container {
+            text-align: center;
+            position: absolute;
+            top: 80px; /* 调整按钮容器距离页面顶部的位置 */
+            left: 50%; /* 将按钮容器水平居中 */
+            transform: translateX(-50%); /* 居中偏移 */
+        }
+
+        /* 按钮样式 */
+		button {
+			padding: 10px 20px;
+			margin: 10px;
+			font-size: 12px;
+			background-color: #F0FFFF; /* 淡灰蓝色背景 */
+			color: black;
+			border: none;
+			cursor: pointer;
+			position: relative;
+			z-index: 1; /* 位于模拟窗口之上 */
+			border-radius: 10px; /* 圆角 */
+			transition: background-color 0.2s, box-shadow 0.2s; /* 添加过渡效果 */
+		}
+
+		/* 鼠标悬停时按钮效果 */
+		button:hover {
+			background-color: #B0B7C4; /* 鼠标悬停时的背景颜色 */
+			box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* 鼠标悬停时的阴影效果，模拟下凹 */
+		}
+		
+		 /* 逐渐浮现动画 */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+	
+    </style>
+</head>
+<body>
+
+	    <!-- 在页面中添加一个标题 -->
+	    <h1 align="center">Praat下载</h1>
+
+        <button class="menu-button" id="return-button"><a href="Praat主页.html">返回</a></button>
+	    <br><br><br><br><br><br>
+	    <!-- 按钮容器 -->
+        <div id="button-container" style="white-space: nowrap;">
+        <!-- 不同计算机系统的按钮 -->
+        <button onclick="simulateSystem('Windows')">Windows</button>
+        <button onclick="simulateSystem('Linux')">Linux</button>
+        <button onclick="simulateSystem('Raspberry Pi')">Raspberry Pi</button>
+        <button onclick="simulateSystem('Macintosh')">Macintosh</button>
+		<button onclick="simulateSystem('FreeBSD')">FreeBSD</button>
+		<button onclick="simulateSystem('SGI')">SGI</button>
+		<button onclick="simulateSystem('Solaris')">Solaris</button>
+		<button onclick="simulateSystem('HPUX')">HPUX</button>
+		<button onclick="simulateSystem('Chromebook')">Chromebook</button>
+		<button onclick="simulateSystem('License/Sourcecode')">License/Sourcecode</button>
+    </div>
+
+    <div id="simulation-window">
+        <div id="close-button"></div>
+        <div id="command-line">
+            <!-- 命令行内容将在按钮点击时通过JavaScript进行更新 -->
+        </div>
+    </div>
+
+   
+
+    <script>
+       // JavaScript函数，模拟不同系统的命令行输出
+		function simulateSystem(systemName) {
+			var commandLine = document.getElementById('command-line');
+			commandLine.innerHTML = '';
+
+			switch (systemName) {
+				case 'Windows':
+					commandLine.innerHTML = 'C:\\> 64-bit版本: <a href=https://www.fon.hum.uva.nl/praat/praat6316_win64.zip>praat6316_win64.zip</a> (29 August 2023; 13.4 MB)/32-bit 版本:<a href=https://www.fon.hum.uva.nl/praat/praat6316_win32.zip>praat6316_win32.zip</a> (2023-8-29; 13.3 MB)<br><br>老版本：<br><br>Windows 2000/XP/Vista:<a href=https://www.fon.hum.uva.nl/praat/old/6151/praat6151_win32.zip>praat6151_win32.zip</a> 2021-7-22(或者<a href=https://www.fon.hum.uva.nl/praat/old/6151/praat6151_win64.zip>praat6151_win64.zip</a> for 64-bit);<br><br>Windows 95/98/NT4/ME:<a href=https://www.fon.hum.uva.nl/praat/old/4601/praat4601_win98sit.exe>praat4601_win98sit.exe</a> 2007-5-17;对应的console版本：<a href=https://www.fon.hum.uva.nl/praat/old/4601/praatcon4601_win98sit.exe>praatcon4601_win98sit.exe</a>;<br><br>如果你想打开电影文件中的音频，尝试<a href=https://www.fon.hum.uva.nl/praat/old/5314/praat5314_win32.zip>praat5314_win32.zip</a> 2012-4-28.<br><br>中文版：<a href="https://pan.baidu.com/s/1cThfrIomlttMkpTAtlTN4w?pwd=pt45">下载地址</a><br>汉化者：贝先明<br>微信公众号：实验语音学与Praat软件。';
+					break;
+				case 'Linux':
+					commandLine.innerHTML = '~$ 普通版本 (64-bit, for interactive work as well as scripting):<a href=https://www.fon.hum.uva.nl/praat/praat6316_linux64.tar.gz>praat6316_linux64.tar.gz</a> (2023-8-29; 19.2 MB);<br>barren服务器版本 (64-bit, no GUI, no network, no graphics, no sound):<a href=https://www.fon.hum.uva.nl/praat/praat6316_linux64barren.tar.gz>praat6316_linux64barren.tar.gz</a>(2023-8-29; 20.3 MB);<br>无GUI服务器版本 (64-bit, no GUI, no network, no sound, but can create graphics files):<a href=https://www.fon.hum.uva.nl/praat/praat6316_linux64nogui.tar.gz>praat6316_linux64nogui.tar.gz</a> (2023-8-29; 20.3 MB)';
+					break;
+				case 'Raspberry Pi':
+					commandLine.innerHTML = 'ssh pi@ <b>32-bit ARMv7 版本: <a href=https://www.fon.hum.uva.nl/praat/praat6316_rpi_armv7.tar.gz>praat6316_rpi_armv7.tar.gz</a></b> (29 August 2023; 15.3 MB)';
+					break;
+				case 'Macintosh':
+					commandLine.innerHTML = 'Macintosh:~ user$  64-bit版本(MacOS 10.11-10.15, macOS 11/12/13, for Intel and Apple Silicon): <b><a href=https://www.fon.hum.uva.nl/praat/praat6316_mac.dmg>praat6316_mac.dmg</a></b> (2023年8月29日; 26.0 MB)<br>1.（自动/手动）打开文件以后，你会看到一个Praat或Praat.app文件，直接将其拖进应用文件夹就好。<br> 2. 如何启动：双击即可。教程:在帮助菜单中<br><br>3.第一次打开遇到的问题：<br><br>如果Mac显示：Praat.app is an application downloaded from the Internet. Are you sure you want to open it?点击运行即可；<br><br>如果Mac显示：Your security settings allow you to install only apps that you downloaded from the App Store; 那么，你需要到Apple menu -> System Preferences -> Security & Privacy中，把“Allow apps downloaded from:” 设置成“App Store and identified developers”;<br><br>如果Mac显示:“Praat cannot be opened because it is from an unidentified developer; your security preferences allow installation of only apps from the App Store and identified developers”这情况可能是因为你的电脑没有网络查询我们的证书，但是你应该还是能打开软件的;<br><br>如果Mac显示：“Praat cannot be opened because Apple cannot check it for malicious software; this software needs to be updated; contact the developer for more information”，到Apple menu -> System Preferences -> Security & Privacy，点击“Open anyway”。<br><br>4.语音符号: <b><a href=https://www.fon.hum.uva.nl/praat/CharisSIL-6.200.zip>CharisSIL-6.200.zip</a></b> (February 2023)/<b><a href=https://www.fon.hum.uva.nl/praat/DoulosSIL-6.200.zip>DoulosSIL-6.200.zip</a></b> (February 2023):下载完成以后解压压缩包，点击字体文件安装。<br><br>其他版本：<br>MacOS 10.9或者10.10, 尝试<a href=https://www.fon.hum.uva.nl/praat/old/6309/praat6309_mac.dmg>Praat 6.3.09</a> 2023-3-2.<br>MacOS 10.7或者10.8, 尝试<a href=old/6116/praat6116_mac64.dmg>Praat 6.1.16</a> 2020-6-6.<br>MacOS 10.5 或者10.6（因特尔处理器）, 尝试Praat <a href=old/6016/praat6016_mac32.dmg>6.0.16</a> 2016-4-5.<br>如果你想复制粘贴到Word 2004, 或者打开电影中的音频, 或者打开Sound Designer II 文件, 尝试 <a href=https://www.fon.hum.uva.nl/praat/old/5314/praat5314_mac.dmg> Praat 5.3.14</a> 2012-4-28.<br>MacOS 10.5（PowerPC处理器）, 尝试 <a href=https://www.fon.hum.uva.nl/praat/old/5217/praat5217_mac.dmg>Praat 5.2.17</a> 2011-3-2.<br> MacOS 10.4, 尝试<a href=https://www.fon.hum.uva.nl/praat/old/5217/praat5217_mac.dmg>Praat 5.2.17</a>2011-3-2.<br>MacOS 10.2或者10.3, 尝试 Praat 5.1.19 (<a href=https://www.fon.hum.uva.nl/praat/old/5119/praat5119_mac.dmg>dmg</a> 或者 <a href=https://www.fon.hum.uva.nl/praat/old/5119/praat5119_mac.sit>sit</a>) 2009-9-1.<br>MacOS 10.1, 尝试 <a href=https://www.fon.hum.uva.nl/praat/old/4113/PraatM_4113.sit>Praat 4.1.13</a> 2003-10-3.<br>MacOS 8.5到9.2的系统, 尝试 <a href=https://www.fon.hum.uva.nl/praat/old/4501/praat4501_mac9.sit>praat4501_mac9.sit</a>2006-10-28 and 从<a href=https://www.fon.hum.uva.nl/praat/silipa93.sit>silipa93.sit</a>安装字体.<br>MacOS 7系统, 尝试 <a href=https://www.fon.hum.uva.nl/praat/old/4223/praat4223_mac7.sit>praat4223_mac7.sit</a> 2004-11-7 并从<a href=https://www.fon.hum.uva.nl/praat/silipa93.sit>silipa93.sit</a>安装字体.';
+					break;
+				case 'FreeBSD':
+					commandLine.innerHTML = 'user@FreeBSD:~$ 去<a href=http://www.freebsd.org/cgi/ports.cgi?query=praat&stype=all>its FreeBSD ports download page</a>下载';
+					break;
+				case 'SGI':
+					commandLine.innerHTML = 'user@SGI:~$ <a href=https://www.fon.hum.uva.nl/praat/old/4100/praat4100_sgi.tar.gz>praat4100_sgi.tar.gz</a></b> (May 28, 2003; 1,824,987 bytes)';
+					break;
+				case 'Solaris':
+					commandLine.innerHTML = 'user@Solaris:~$ 已停更，<a href=https://www.fon.hum.uva.nl/praat/old/4300/praat4300_solaris.tar.gz>praat4300_solaris.tar.gz</a>';
+					break;
+				case 'HPUX':
+					commandLine.innerHTML = 'user@HPUX:~$ 已停更，<a href=https://www.fon.hum.uva.nl/praat/old/4100/praat4100_hpux.tar.gz>praat4100_hpux.tar.gz</a>';
+					break;
+				case 'Chromebook':
+					commandLine.innerHTML = 'Chromebook: 先安装Linux,在Linux系统中安装。';
+					break;
+				case 'License/Sourcecode':
+                     commandLine.innerHTML = '证书&源码: 证书：<a href="https://www.fon.hum.uva.nl/praat/manual/General_Public_License__version_3.html">General Public License, version 3</a>；<a href="https://www.fon.hum.uva.nl/praat/manual/Acknowledgments.html">鸣谢</a><br><br>警告：你只有在下列情况下才用得到源代码：1.拓展功能；2.编译我们未提供的文件格式；3.为了理解或者再利用源代码；<br><br>证书：<a href=https://www.fon.hum.uva.nl/praat/gpl-3.0.txt>GNU General Public License</a><br><br><a href=https://github.com/praat/praat>Praat’s GitHub page</a>';
+                     break;
+			}
+		}
+		
+	 // 返回按钮点击事件
+        document.getElementById('return-button').addEventListener('click', function() {
+            // 返回到上一页，可以使用浏览器的历史记录来实现
+            window.history.back();
+        });
+
+    </script>
+</body>
+</html>
+

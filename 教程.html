@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>目录页</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #BEBEBE;
+            font-family: "Times New Roman", "宋体", serif; /* 标题字体 */
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            opacity: 0; /* 初始设置为不可见 */
+            animation: fadeIn 2s ease-in-out forwards; /* 隐现特效 */
+        }
+
+        h1 {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+        }
+
+        a:hover {
+            color: #ff6600;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0; /* 开始时不可见 */
+            }
+            100% {
+                opacity: 1; /* 结束时可见 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>目录</h1>
+        <ul>
+		    <li><a href="#">预备章节: 实验语音学基础（译者增补）</a></li>
+            <li><a href="#">章节 1:  言语分析</a></li>
+            <li><a href="#">章节 2:  加标与切分</a></li>
+            <li><a href="#">章节 3:  学习算法</a></li>
+            <li><a href="#">章节 4:  图形</a></li>
+            <li><a href="#">章节 5:  言语合成</a></li>
+			<li><a href="#">章节 6:  听感实验</a></li>
+			<li><a href="#">章节 7:  言语操控</a></li>
+			<li><a href="#">章节 8:  统计</a></li>
+			<li><a href="#">章节 9:  可编程性</a></li>
+			<li><a href="#">章节 10: 可配置性</a></li>
+			<li><a href="#">章节 11: 可移植性</a></li>
+        </ul>
+    </div>
+	 <div class="container">
+	 <p><a href="Praat主页.html">回到首页</a></p>
+	 <div>
+</body>
+</html>
+
