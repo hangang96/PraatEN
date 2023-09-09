@@ -83,8 +83,6 @@
 				line-height: 1.0; /* 设置行高，可以根据需要调整 */
 				animation: fadeInContent 2s ease-in-out; /* 设置正文的缓慢隐现效果 */
 			}  
-			
-			
 
 
 
@@ -147,21 +145,6 @@
 				margin-bottom: 20px;
 			}	 
 			
-		footer {
-		      opacity: 0; /* 初始设置为不可见 */
-		      animation: fadeIn 4s ease-in-out; /* 隐现特效 */
-		        }
-		/* 设置图标的动画关键帧 */
-			@keyframes fadeIn {
-				0% {
-					opacity: 0; /* 初始完全透明 */
-				}
-				100% {
-					opacity: 1; /* 结束时完全不透明 */  
-				}
-			}		
-
-
         #menu-container {
             position: fixed;
             top: 0;
@@ -245,8 +228,8 @@
 			width: 40px;
 			height: 40px;
             transform: translateX(-50%); /* 使 Logo 居中 */
-	    
-		
+			
+
 		
 
 
