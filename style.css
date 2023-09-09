@@ -148,7 +148,7 @@
 			}	 
 			
 		footer {
-		     opacity: 0; /* 初始设置为不可见 */
+		      opacity: 0; /* 初始设置为不可见 */
 		      animation: fadeIn 4s ease-in-out; /* 隐现特效 */
 		        }
 		/* 设置图标的动画关键帧 */
@@ -157,7 +157,7 @@
 					opacity: 0; /* 初始完全透明 */
 				}
 				100% {
-					opacity: 1; /* 结束时完全不透明 */
+					opacity: 1; /* 结束时完全不透明 */  
 				}
 			}		
 
