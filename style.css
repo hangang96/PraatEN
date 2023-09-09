@@ -21,7 +21,6 @@
             z-index: -1; /* 将半透明背景置于最底层 */
         }
 		
-		
 		/* 包装标题的容器 */
         #title-container {
             display: flex;
@@ -72,6 +71,7 @@
 			}		
 			
 			
+			
 			/* 正文样式 */
 			#content {
 				font-size:12px;
@@ -84,13 +84,7 @@
 				animation: fadeInContent 2s ease-in-out; /* 设置正文的缓慢隐现效果 */
 			}  
 			
-			/* 注释文字样式 */
-			#footer-text {
-				text-align: center; /* 文本居中对齐 */
-				color: #F5FFFA; /* 文字颜色 */
-				font-size: 6px; /* 字体大小 */
-				margin-top: 5px; /* 调整注释文字与正文的间距，根据需要修改 */
-			}
+			
 
 
 
@@ -151,7 +145,21 @@
 				font-size: 18px;
 				line-height: 1.6;
 				margin-bottom: 20px;
-			}	
+			}	 
+			
+		footer {
+		     opacity: 0; /* 初始设置为不可见 */
+		      animation: fadeIn 4s ease-in-out; /* 隐现特效 */
+		        }
+		/* 设置图标的动画关键帧 */
+			@keyframes fadeIn {
+				0% {
+					opacity: 0; /* 初始完全透明 */
+				}
+				100% {
+					opacity: 1; /* 结束时完全不透明 */
+				}
+			}		
 
 
         #menu-container {
@@ -237,8 +245,8 @@
 			width: 40px;
 			height: 40px;
             transform: translateX(-50%); /* 使 Logo 居中 */
+	    
 		
-	
 		
 
 
